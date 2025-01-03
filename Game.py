@@ -63,6 +63,7 @@ class Game:
         self.guess_count += 1
         if word_guess == self.random_word: # win condition
             print("Congratulations, you win :)")
+            
             sys.exit()
 
         # if input is not invalid or winning, the following:
