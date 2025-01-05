@@ -26,7 +26,7 @@ class Game:
 
     @staticmethod
     def get_valid_set():
-        """Loads possible answers from file, returning uppercase set. O(1) efficiency!!!"""
+        """Loads possible answers from file, returning uppercase set. O(1) efficiency when checked!!!"""
         words = set()
         with open('valid-wordle-words.txt', 'r') as file:
             for line in file:
@@ -38,11 +38,12 @@ class Game:
     def __init__(self):
         self.random_word = random.choice(Game.WORDS)
         self.guess_count = 0
+        self.game_won = False
 
     def play_game(self):
         """Main game loop. Handles up to 6 guesses or until word is found."""
         print("Welcome to Wordle!")
-        while self.guess_count < 6:
+        while self.guess_count < 6 and not self.game_won:
             result = self.guess()
             print(result)
         print(f"The word was: {self.random_word}")
@@ -63,7 +64,7 @@ class Game:
         self.guess_count += 1
         if word_guess == self.random_word: # win condition
             print("Congratulations, you win :)")
-            sys.exit()
+            self.game_won = True
 
         # if input is not invalid or winning, the following:
         back = list("_____") #empty return list, converted to string at end
