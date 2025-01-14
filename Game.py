@@ -25,7 +25,7 @@ class Game:
 
     @staticmethod
     def get_valid_set():
-        """Loads possible answers from file, returning uppercase set. O(1) efficiency when checked!!!"""
+        """Loads valid answer inputs from file, returning uppercase set. O(1) efficiency when checked!!!"""
         words = set()
         with open('valid-wordle-words.txt', 'r') as file:
             for line in file:
